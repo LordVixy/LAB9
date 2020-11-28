@@ -1,0 +1,25 @@
+1. Copie des fichiers via la commande cp
+
+2. Compilation des fonctions avec "gcc -Wall -fPIC -c min.c max.c var.c"
+
+3.Création de la bibliothèque partagée "gcc -shared -o liboutils.so var.o min.o max.o"
+
+4. "mv liboutils.so ./opt/lib"
+
+5. Compilation du main "gcc main.c -L./opt/lib -loutils -o prog_q5"
+
+6. En exécutant on remaque que le compilateur ne trouve pas la bibliothèque dynamique.
+
+7. En effectuant la commande "echo $LD_LIBRARY_PATH" on constate qu'il est vide.
+
+8. Avec la commande "export LD_LIBRARY_PATH=~/LAB9/opt/lib" nous assossions la variable globale a notre chemin d'accès
+
+9. Compilation avec "gcc main.c -L./opt/lib -loutils -lm -o prog_q9" et execution du programme avec "./prog_q9" 
+ On constate le bon fonctionnement du programme !
+
+10.Pour modifier la variable globale de manière permanente, on "vim .bashrc" et on rajoute à la fin "export LD_LIBRARY_PATH=~/LAB9/opt/lib"
+
+11. Pour localiser cette bibliothèque, on utilise "whereis libm.so" qui nous donne :
+libm: /usr/lib/x86_64-linux-gnu/libm.a /usr/lib/x86_64-linux-gnu/libm.so
+
+12. 
